@@ -9,14 +9,14 @@
 
 body {
     height: 100vh;
-    background: url(img/main_cover.jpg)
+    background: url(../img/main_cover.jpg)
     no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -25,7 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 8%;
-    box-shadow: 0 5px 10px #000;
+    box-shadow: 0 5px 10px #080000;
 }
 
 header .logo {
