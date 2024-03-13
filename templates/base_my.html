@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <title>Menu</title>	
+</head>
+<body>
+    <header>
+        <a href ="#" class="logo">Game_Chest</a>
+        <nav>
+        <ul>
+            <li><a href="#">Домой</a></li>
+            <li><a href="#">Каталог &blacktriangledown;</a>
+                <ul>
+                    <li><a href="#">Экшен</a></li>
+                    <li><a href="#">RPG</a></li>
+                    <li><a href="#">Гонки</a></li>
+                    <li><a href="#">Файтинг</a></li>
+                    <li><a href="#">Стратегия</a></li>
+                    <li><a href="#">Все игры</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Профиль</a></li>
+            <li><a href="#">Корзина</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">О нас</a></li>
+        </ul>
+        </nav>
+    </header>
+    <main>
+{% block content %}
+  
+{% endblock %}
+</main>
+    <!-- <footer>
+        <p>&copy; 2024 YourCompanyName. All rights reserved.</p>
+        <ul>
+            <li><a href="https://vk.com"><img src="vk_logo.png" alt="VK"></a></li>
+            <li><a href="https://www.facebook.com"><img src="facebook_logo.png" alt="Facebook"></a></li>
+            <li><a href="https://www.youtube.com"><img src="youtube_logo.png" alt="YouTube"></a></li>
+        </ul>
+    </footer> -->
+</body>
+</html>
