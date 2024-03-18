@@ -9,7 +9,8 @@ def home(request: HttpRequest):
 
 
 def products(request: HttpRequest):
-    products_list = Product.objects.all()
+    products_list = Product.objects.filter(is_active=True)
+
     return HttpResponse(render(request, 'products.html', {
         'products': products_list
     }))

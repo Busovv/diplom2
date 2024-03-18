@@ -5,18 +5,22 @@ class Product(models.Model):
     title = models.CharField(
         max_length=255, blank=False, verbose_name='Название'
     )
+    image = models.ImageField(
+        upload_to='products', blank=True, null=True, verbose_name='Изображение'
+    )
     description = models.TextField(
-        verbose_name='Описание'
+        verbose_name='Описание', default='', blank=True
     )
     price = models.DecimalField(
         max_digits=8, decimal_places=2, verbose_name='Цена'
     )
-    discount_price = models.DecimalField(
-        max_digits=8, decimal_places=2, blank=True, null=True, verbose_name='Цена со скидкой'
+    original_price = models.DecimalField(
+        max_digits=8, decimal_places=2, blank=True, null=True, verbose_name='Цена без скидки(зачеркнуто)'
     )
     count = models.IntegerField(
         default=0, verbose_name='Количество'
     )
+    is_active = models.BooleanField(default=True, verbose_name='Активен?')
 
     class Meta:
         verbose_name = 'Товар'
