@@ -10,6 +10,7 @@ def home(request: HttpRequest):
 
 def products(request: HttpRequest):
     products_list = Product.objects.filter(is_active=True)
+    products_list = products_list.order_by('count')
 
     return HttpResponse(render(request, 'products.html', {
         'products': products_list
