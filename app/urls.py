@@ -7,6 +7,5 @@ import main.urls as main_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(main_urls.urlpatterns)),
-    path('products/', include(main_urls.urlpatterns)),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
 

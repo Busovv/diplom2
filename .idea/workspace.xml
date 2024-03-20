@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed5e4e9d-c7d0-4fc7-a020-c3cc2215fad8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main/static/home/styles/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/product/styles/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/img/main_cover.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/img/main_cover.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/styles/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/styles/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/styles/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/base/styles/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/styles/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -52,7 +54,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/BUSOVV/Documents/учеба/diplom2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.project&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">

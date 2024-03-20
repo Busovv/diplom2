@@ -18,17 +18,17 @@
         <div class="product-card
             {% if product.count < 1 %}product-card_disabled{% endif %}">
             <img class="product-card__image"
-                 src="{% if product.image.url is not None %}{{ product.image.url }}{% endif %}">
+                 src="{% if product.image.url is not None %}{{ product.image.url }}{% endif %}"
                  alt="{{ product.title }}">
             <h2 class="product-card__title">{{ product.title }}</h2>
             <p class="product-card__text">{{ product.description }}</p>
             <div class="product-card__original-price-container">
-            {% if product.original_price is not None %}
-            <p class="product-card__original-price">{{ product.original_price }}</p>
-            {% endif %}
-                </div>
+                {% if product.original_price is not None %}
+                <p class="product-card__original-price">{{ product.original_price }}</p>
+                {% endif %}
+            </div>
             <p class="product-card__price">{{ product.price }}</p>
-            <a href="/product/1" class="product-card__link">Подробнее</a>
+            <a href="{% url 'product' product.id %}" class="product-card__link">Подробнее</a>
         </div>
     </li>
     {% endfor %}
