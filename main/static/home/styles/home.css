@@ -1,0 +1,18 @@
+.greeting {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    font-size: 36px;
+    width: 600px;
+    position: absolute;
+    top: 300px; /* расстояние сверху */
+    left: 50%; /* расстояние слева (можно использовать другие значения, например, right: 50%, чтобы прикрепить к правой точке) */
+    transform: translateX(-50%); /* центрирование блока относительно точки слева */
+    overflow: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 20px 30px 40px;
+    box-shadow: 1px 1px 8px black;
+    background-color: rgba(51, 51, 51, 0.4);
+}
