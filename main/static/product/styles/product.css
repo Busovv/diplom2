@@ -1,4 +1,5 @@
 button {
+    font: inherit;
 	outline: none;
 	border:none;
 	background-image:none;
@@ -75,4 +76,9 @@ input {
 .product__add-to-basket-button[disabled]:hover {
     background-color: transparent;
     cursor: not-allowed;
+}
+
+.product__image {
+    width: 500px;
+    height: auto;
 }

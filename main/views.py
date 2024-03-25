@@ -40,14 +40,29 @@ def product_view(request: HttpRequest, product_id: int):
 
 
 def add_to_basket_view(request: HttpRequest, product_id: int):
-    request.session['cart'] = request.session.get('cart', []) + [
-        {
+    product = get_product_for_view(id=product_id)
+
+    if product.count < 1:
+        return redirect('product', id=product_id)
+
+    basket: list = request.session.get('basket', [])
+
+    found_item = next(
+        (item for item in basket if item['product_id'] == product_id),
+        None,
+    )
+
+    if found_item is not None:
+        found_item['quantity'] = found_item['quantity'] + 1
+    else:
+        basket.append({
             'product_id': product_id,
             'quantity': 1
-        }
+        })
 
-    ]
-    return redirect('products')
+    request.session['basket'] = basket
+
+    return redirect('basket')
 
 def basket_view(request: HttpRequest):
     items = request.session.get('basket', [])
@@ -55,6 +70,15 @@ def basket_view(request: HttpRequest):
     for item in items:
         item['product'] = Product.objects.get(id=item['product_id'])
 
+    total_price = sum(item['product'].price * item['quantity']
+                      for item in items)
+
     return HttpResponse(render(request, 'basket.html', {
-        'items': items
+        'items': items,
+        'total_price': total_price,
     }))
+
+def basket_clear_view(request: HttpRequest):
+    request.session.update({'basket': []})
+
+    return redirect('basket')
