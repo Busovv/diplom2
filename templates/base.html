@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{% static '/base/styles/base.css' %}">
     <link rel="stylesheet" href="{% static '/home/styles/home.css' %}">
     <link rel="stylesheet" href="{% static '/product/styles/product.css' %}">
+    <link rel="stylesheet" href="{% static '/products/styles/products.css' %}">
+    <link rel="stylesheet" href="{% static '/basket/styles/basket.css' %}">
     <title>Menu</title>	
 </head>
 <body>
@@ -16,7 +18,7 @@
         <ul>
             <li><a href="#">Домой</a></li>
             <li><a href="#">Новости</a></li>
-            <li><a href="#">Каталог &blacktriangledown;</a>
+            <li><a href="{% url 'products' %}">Каталог &blacktriangledown;</a>
                 <ul>
                     <li><a href="#">Экшен</a></li>
                     <li><a href="#">RPG</a></li>
@@ -27,7 +29,7 @@
                 </ul>
             </li>
             <li><a href="#">Профиль</a></li>
-            <li><a href="#">Корзина</a></li>
+            <li><a href="{% url 'basket' %}">Корзина</a></li>
             <li><a href="#">Контакты</a></li>
             <li><a href="#">О нас</a></li>
         </ul>

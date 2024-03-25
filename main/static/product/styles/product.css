@@ -20,20 +20,59 @@ input {
 	font-size: inherit;
 }
 
-.add-to-cart-btn {
-  background-color: #4CAF50; /* Цвет фона кнопки */
-  color: white; /* Цвет текста кнопки */
-  padding: 10px 20px; /* Внутренний отступ кнопки */
-  border: none; /* Убираем границу кнопки */
-  border-radius: 20px; /* Скругляем углы кнопки */
-  cursor: pointer; /* Задаем указатель при наведении на кнопку */
+.product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.add-to-cart-btn:hover {
-  background-color: #45a049; /* Изменяем цвет фона при наведении */
+.product__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.add-to-cart-btn:active {
-  background-color: #4CAF50; /* Возвращаем исходный цвет фона при нажатии */
-  transform: scale(0.98); /* Добавляем уменьшение кнопки при нажатии */
+.product__title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.product__original-price {
+    text-decoration: line-through;
+}
+
+.product__field {
+    text-align: center;
+}
+
+.product__price-container {
+    margin-bottom: 1em;
+}
+
+.product__prices-heading {
+    margin-bottom: 0.5em;
+}
+
+.product__add-to-basket-form {
+    margin-bottom: 1em;
+}
+
+.product__add-to-basket-button {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0.3em;
+    outline: 1px solid black;
+    border-radius: 0.3em;
+}
+
+.product__add-to-basket-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.product__add-to-basket-button[disabled]:hover {
+    background-color: transparent;
+    cursor: not-allowed;
 }
