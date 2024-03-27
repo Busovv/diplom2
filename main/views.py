@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, redirect
 
@@ -15,6 +16,7 @@ def products(request: HttpRequest):
     return HttpResponse(render(request, 'products.html', {
         'products': products_list
     }))
+
 
 def get_product_for_view(id: int):
     try:
@@ -64,6 +66,7 @@ def add_to_basket_view(request: HttpRequest, product_id: int):
 
     return redirect('basket')
 
+
 def basket_view(request: HttpRequest):
     items = request.session.get('basket', [])
 
@@ -78,7 +81,32 @@ def basket_view(request: HttpRequest):
         'total_price': total_price,
     }))
 
+
 def basket_clear_view(request: HttpRequest):
     request.session.update({'basket': []})
 
     return redirect('basket')
+
+
+def order_view(request: HttpRequest):
+    if request.method == 'GET':
+        if not request.user.is_authenticated:
+            login_page = redirect('login')
+            login_page['Location'] += '?next=/order'
+            return login_page
+
+        if len(request.session.get('basket', [])) < 1:
+            return redirect('basket')
+
+        basket_products_ids = [item['product_id']
+                               for item in request.session.get('basket', [])]
+        basket_products = Product.objects.filter(id__in=basket_products_ids)
+
+        basket_sum = basket_products.aggregate(sum_=Sum('price'))['sum_']
+
+        basket_quantity = sum(item['quantity'] for item in request.session.get('basket', []))
+
+        return HttpResponse(render(request, 'order.html', {
+            'order_sum': basket_sum,
+            'order_quantity': basket_quantity
+        }))
