@@ -95,18 +95,21 @@ def order_view(request: HttpRequest):
             login_page['Location'] += '?next=/order'
             return login_page
 
-        if len(request.session.get('basket', [])) < 1:
+        basket_items = request.session.get('basket', [])
+
+        if len(basket_items) < 1:
             return redirect('basket')
 
-        basket_products_ids = [item['product_id']
-                               for item in request.session.get('basket', [])]
+        basket_products_ids = [item['product_id'] for item in basket_items]
         basket_products = Product.objects.filter(id__in=basket_products_ids)
 
-        basket_sum = basket_products.aggregate(sum_=Sum('price'))['sum_']
+        for item in basket_items:
+            item['product'] = basket_products.get(id=item['product_id'])
 
-        basket_quantity = sum(item['quantity'] for item in request.session.get('basket', []))
+        basket_sum = sum(item['product'].price * item['quantity']
+                         for item in basket_items)
 
         return HttpResponse(render(request, 'order.html', {
             'order_sum': basket_sum,
-            'order_quantity': basket_quantity
+            'products': basket_items,
         }))
