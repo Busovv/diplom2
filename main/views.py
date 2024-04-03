@@ -3,6 +3,7 @@ from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 
+from .forms import SearchForm
 from .models import Product, Order, OrderProduct
 
 
@@ -10,12 +11,24 @@ def home(request: HttpRequest):
     return HttpResponse(render(request, 'home.html', {}))
 
 
-def products(request: HttpRequest):
-    products_list = Product.objects.filter(is_active=True)
-    products_list = products_list.order_by('count')
+def products_view(request: HttpRequest):
+    products = Product.objects.filter(is_active=True)
+    products = products.order_by('-count')
+
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        products = products.filter(
+            title__icontains=search_form.cleaned_data['query']
+        )
 
     return HttpResponse(render(request, 'products.html', {
-        'products': products_list
+        'products': products,
+        'search_form': search_form
+    }))
+
+    return HttpResponse(render(request, 'products.html', {
+        'products': products,
+        'search_form': search_form
     }))
 
 

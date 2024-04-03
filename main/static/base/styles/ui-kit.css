@@ -7,19 +7,44 @@
     text-align: center;
 }
 
-.input {
+.input-group {
+    display: block;
+    width: 100%;
+}
+
+.input, .input-group input {
+    width: 100%;
     display: block;
     border-radius: 0.3em;
     border: 1px solid black;
-    padding: 0.3em;
+    padding: 0.2em 0.3em;
 }
 
-.input-group input {
-    display: block;
+.complex-input {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     border-radius: 0.3em;
     border: 1px solid black;
 }
 
-.input-group label {
+.complex-input input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
     display: block;
+    border-radius: 0;
+    padding: 0.2em 0.3em;
+}
+
+.label + .input, .input-group label + input {
+    margin-top: 0.2em;
+}
+
+.label, .input-group label {
+    display: block;
+}
+
+.link:hover {
+    text-decoration: underline;
 }
