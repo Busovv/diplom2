@@ -8,7 +8,7 @@ from .models import Product, Order, OrderProduct
 
 
 def home(request: HttpRequest):
-    return HttpResponse(render(request, 'home.html', {}))
+    return HttpResponse(render(request, 'products.html', {}))
 
 
 def products_view(request: HttpRequest):

@@ -25,6 +25,16 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center; /* Центрируем элементы по вертикали */
+    border: 1px solid #000; /* Черная рамка */
+    border-radius: 5px; /* Закругляем углы */
+    padding: 10px; /* Добавляем внутренние отступы */
+}
+
+.product-container img {
+    width: 200px; /* Задаем ширину изображения */
+    height: auto; /* Автоматическое определение высоты */
+    border-radius: 5px; /* Закругляем углы изображения */
 }
 
 .product__info {

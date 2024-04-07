@@ -12,6 +12,23 @@ class Product(models.Model):
     description = models.TextField(
         verbose_name='Описание', default='', blank=True
     )
+
+    release = models.TextField(
+        verbose_name='Дата выхода', default='', blank=True
+    )
+
+    publisher = models.TextField(
+        verbose_name='Издатель', default='', blank=True
+    )
+
+    developer = models.TextField(
+        verbose_name='Разработчик', default='', blank=True
+    )
+
+    genre = models.TextField(
+        verbose_name='Жанр', default='', blank=True
+    )
+
     price = models.DecimalField(
         max_digits=8, decimal_places=2, verbose_name='Цена'
     )
