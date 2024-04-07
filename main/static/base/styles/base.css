@@ -9,10 +9,10 @@
 
 body {
     height: 100vh;
-    background: url(../img/main_cover.jpg)
-    no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: #e1ccb1; /* Цвет кофе с молоком */
+    color: #fff; /* Белый цвет текста */
 }
 
 header {
