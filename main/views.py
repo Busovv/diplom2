@@ -1,20 +1,36 @@
+from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_http_methods
 
-from .models import Product
+from .forms import SearchForm
+from .models import Product, Order, OrderProduct
 
 
 def home(request: HttpRequest):
     return HttpResponse(render(request, 'home.html', {}))
 
 
-def products(request: HttpRequest):
-    products_list = Product.objects.filter(is_active=True)
-    products_list = products_list.order_by('count')
+def products_view(request: HttpRequest):
+    products = Product.objects.filter(is_active=True)
+    products = products.order_by('-count')
+
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        products = products.filter(
+            title__icontains=search_form.cleaned_data['query']
+        )
 
     return HttpResponse(render(request, 'products.html', {
-        'products': products_list
+        'products': products,
+        'search_form': search_form
     }))
+
+    return HttpResponse(render(request, 'products.html', {
+        'products': products,
+        'search_form': search_form
+    }))
+
 
 def get_product_for_view(id: int):
     try:
@@ -64,6 +80,7 @@ def add_to_basket_view(request: HttpRequest, product_id: int):
 
     return redirect('basket')
 
+
 def basket_view(request: HttpRequest):
     items = request.session.get('basket', [])
 
@@ -78,7 +95,46 @@ def basket_view(request: HttpRequest):
         'total_price': total_price,
     }))
 
+
 def basket_clear_view(request: HttpRequest):
     request.session.update({'basket': []})
 
     return redirect('basket')
+
+
+@require_http_methods(["POST"])
+def order_view(request: HttpRequest):
+    if not request.user.is_authenticated:
+        login_page = redirect('login')
+        login_page['Location'] += '?next=/order'
+        return login_page
+
+    if request.method == 'POST':
+        order = Order()
+        order.user = request.user
+        order.save()
+
+        basket = request.session.get('basket', [])
+        for item in basket:
+            order_product = OrderProduct(order=order)
+            order_product.product = Product.objects.get(id=item['product_id'])
+            order_product.quantity = item['quantity']
+            order_product.price = order_product.product.price
+            order_product.save()
+
+        request.session.update({'basket': []})
+
+        return redirect('get_order', id=order.id)
+
+
+@require_http_methods(["GET"])
+def get_order_view(request: HttpRequest, id: int):
+    try:
+        order = Order.objects.get(id=id)
+    except Order.DoesNotExist:
+        raise Http404('Заказ не найден')
+
+    return HttpResponse(render(request, 'order.html', {
+        'order': order,
+        'products': OrderProduct.objects.filter(order=order),
+    }))

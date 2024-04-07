@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="{% static '/products/styles/products.css' %}">
     <link rel="stylesheet" href="{% static '/basket/styles/basket.css' %}">
     <link rel="stylesheet" href="{% static '/base/styles/ui-kit.css' %}">
-    <link rel="stylesheet" href="{% static '/registration/styles/login.css' %}">
+     <link rel="stylesheet" href="{% static '/order/styles/order.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/login.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/register.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/profile.css' %}">
 
     <title>Menu</title>	
 </head>
@@ -31,7 +34,7 @@
                     <li><a href="#">Все игры</a></li>
                 </ul>
             </li>
-            <li><a href="#">Профиль</a></li>
+            <li><a href="{% url 'profile' %}">Профиль</a></li>
             <li><a href="{% url 'login' %}">Регистрация</a></li>
             <li><a href="{% url 'basket' %}">Корзина</a></li>
             <li><a href="#">Контакты</a></li>
