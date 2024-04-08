@@ -1,5 +1,5 @@
 from django.db.models import Sum
-from django.http import HttpRequest, HttpResponse, Http404
+from django.http import HttpRequest, HttpResponse, Http404, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 
@@ -55,7 +55,7 @@ def product_view(request: HttpRequest, product_id: int):
     }))
 
 
-def add_to_basket_view(request: HttpRequest, product_id: int):
+def basket_add_view(request: HttpRequest, product_id: int):
     product = get_product_for_view(id=product_id)
 
     if product.count < 1:
@@ -81,6 +81,28 @@ def add_to_basket_view(request: HttpRequest, product_id: int):
     return redirect('basket')
 
 
+def basket_increase_view(request: HttpRequest, id: int):
+    items = request.session.get('basket', [])
+    product = get_product_for_view(id=id)
+
+    found_item = next(
+        (item for item in items if item['product_id'] == id),
+        None,
+    )
+
+    if found_item is None:
+        raise Http404('Товар не найден')
+
+    if product.count < found_item['quantity'] + 1:
+        raise HttpRequest('Товар закончился', status=400)
+
+    found_item['quantity'] = found_item['quantity'] + 1
+
+    request.session['basket'] = items
+
+    return HttpResponse(status=200)
+
+
 def basket_view(request: HttpRequest):
     items = request.session.get('basket', [])
 
@@ -102,11 +124,33 @@ def basket_clear_view(request: HttpRequest):
     return redirect('basket')
 
 
+def basket_decrease_view(request: HttpRequest, id: int):
+    items = request.session.get('basket', [])
+
+    found_item = next(
+        (item for item in items if item['product_id'] == id),
+        None,
+    )
+
+    if found_item is None:
+        raise Http404('Товар не найден')
+
+    if found_item['quantity'] > 1:
+        found_item['quantity'] = found_item['quantity'] - 1
+    else:
+        items.remove(found_item)
+
+    request.session['basket'] = items
+
+    return HttpResponse(status=200)
+
+
 @require_http_methods(["POST"])
 def order_view(request: HttpRequest):
     if not request.user.is_authenticated:
         login_page = redirect('login')
-        login_page['Location'] += '?next=/order'
+        login_page['Location'] += '?next=' + reverse('basket')
+
         return login_page
 
     if request.method == 'POST':
@@ -115,10 +159,20 @@ def order_view(request: HttpRequest):
         order.save()
 
         basket = request.session.get('basket', [])
+
+        if len(basket) == 0:
+            return redirect('basket')
+
+        for item in basket:
+            product = Product.objects.get(id=item['product_id'])
+            if item['quantity'] > product.count:
+                return HttpResponseBadRequest('Товара не хватает')
+
         for item in basket:
             order_product = OrderProduct(order=order)
             order_product.product = Product.objects.get(id=item['product_id'])
             order_product.quantity = item['quantity']
+            order_product.product.count -= order_product.quantity
             order_product.price = order_product.product.price
             order_product.save()
 
@@ -138,3 +192,32 @@ def get_order_view(request: HttpRequest, id: int):
         'order': order,
         'products': OrderProduct.objects.filter(order=order),
     }))
+
+
+@require_http_methods(["GET"])
+def cancel_order_view(request: HttpRequest, id: int):
+    try:
+        order = Order.objects.get(id=id)
+    except Order.DoesNotExist:
+        raise Http404('Заказ не найден')
+
+    if order.user != request.user:
+        return HttpResponseBadRequest(
+            'Вы не можете отменить этот заказ',
+            status='403'
+        )
+
+    if not order.is_cancelable:
+        return HttpResponseBadRequest(
+            'Этот заказ уже нельзя отменить. Обратитесь к администратору.',
+            status='400'
+        )
+
+    for order_product in OrderProduct.objects.filter(order=order):
+        order_product.product.count += order_product.quantity
+        order_product.product.save()
+
+    order.status = Order.Status.CANCELED
+    order.save()
+
+    return redirect('profile')

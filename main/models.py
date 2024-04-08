@@ -100,6 +100,17 @@ class Order(models.Model):
     )
 
     @property
+    def status_label(self):
+        return dict(Order.Status.choices)[self.status]
+
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Дата создания'
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name='Дата обновления'
+    )
+
+    @property
     def is_cancelable(self):
         return self.status not in (
             self.Status.CANCELED,
