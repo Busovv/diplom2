@@ -27,7 +27,7 @@ def products_view(request: HttpRequest):
             categories=search_form.cleaned_data['category']
         )
 
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 1)
 
     page_number = request.GET.get("page", 1)
     paged_products = paginator.get_page(page_number)

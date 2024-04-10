@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4cc0e5-e50b-45ad-a796-99526f794521" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/pagination.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/base/styles/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/styles/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/templates/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/product/img/1678418622_papik-pro-p-milii-krot-risunok-48.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

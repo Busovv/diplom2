@@ -46,10 +46,6 @@ class Product(models.Model):
         verbose_name='Разработчик', default='', blank=True
     )
 
-    genre = models.TextField(
-        verbose_name='Жанр', default='', blank=True
-    )
-
     price = models.DecimalField(
         max_digits=8, decimal_places=2, verbose_name='Цена'
     )
