@@ -12,7 +12,7 @@ body {
     background-size: cover;
     background-position: center;
     background-color: #e1ccb1; /* Цвет кофе с молоком */
-    color: #fff; /* Белый цвет текста */
+    color: black;
 }
 
 header {

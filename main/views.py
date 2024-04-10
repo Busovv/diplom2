@@ -2,6 +2,7 @@ from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse, Http404, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
+from django.core.paginator import Paginator
 
 from .forms import SearchForm
 from .models import Product, Order, OrderProduct
@@ -21,13 +22,23 @@ def products_view(request: HttpRequest):
             title__icontains=search_form.cleaned_data['query']
         )
 
-    return HttpResponse(render(request, 'products.html', {
-        'products': products,
-        'search_form': search_form
-    }))
+    if search_form.is_valid() and search_form.cleaned_data['category']:
+        products = products.filter(
+            categories=search_form.cleaned_data['category']
+        )
+
+    paginator = Paginator(products, 5)
+
+    page_number = request.GET.get("page", 1)
+    paged_products = paginator.get_page(page_number)
+
+    if not request.GET._mutable:
+        request.GET._mutable = True
+
+    request.GET['query'] = search_form.cleaned_data['query']
 
     return HttpResponse(render(request, 'products.html', {
-        'products': products,
+        'products_page': paged_products,
         'search_form': search_form
     }))
 
