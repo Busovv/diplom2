@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
@@ -5,6 +7,7 @@ from main.models import Order
 from .forms import RegisterForm
 
 
+@login_required
 def profile_view(request: HttpRequest):
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
 
@@ -19,6 +22,11 @@ def sign_up(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1']
+            )
+            login(request, user)
             return HttpResponse(render(request, 'profile.html', {}))
         else:
             return HttpResponse(render(
