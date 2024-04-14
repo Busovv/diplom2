@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
 from main.models import Order
-from .forms import RegisterForm
+from .forms import CustomUserCreationForm
 
 
 @login_required
@@ -16,14 +16,14 @@ def profile_view(request: HttpRequest):
 
 def sign_up(request):
     if request.method == 'GET':
-        form = RegisterForm()
+        form = CustomUserCreationForm()
         return render(request, 'registration/register.html', {'form': form})
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             user = authenticate(
-                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
                 password=form.cleaned_data['password1']
             )
             login(request, user)
