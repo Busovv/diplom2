@@ -17,7 +17,7 @@
         <h1> Дата выхода: {{ product.release }} </h1>
         <h1> Издатель: {{ product.publisher }}</h1>
         <h1> Разработчик: {{ product.developer }}</h1>
-        <h1> Жанр: {{ product.genre }}</h1>
+        <h1> Жанр: {{ product.get_categories_names_string }}</h1>
         <div class="product__price-container">
             {% if product.original_price is not None %}
             <h2 class="product__field product__prices-heading">Цена:</h2>

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from authentication.models import User
 
 
 class Category(models.Model):
@@ -65,6 +65,10 @@ class Product(models.Model):
     categories = models.ManyToManyField(
         Category, verbose_name='Категории'
     )
+
+    @property
+    def get_categories_names_string(self):
+        return ', '.join([category.title for category in self.categories.all()])
 
     class Meta:
         verbose_name = 'Товар'
