@@ -47,26 +47,10 @@ def products_view(request: HttpRequest):
 def products_by_category(request: HttpRequest, category_id: int):
     paged_products = Product.objects.filter(is_active=True, categories=category_id).order_by('-title')
 
-    # search_form = SearchForm(request.GET)
-    # if search_form.is_valid():
-    #     products = products.filter(
-    #         title__icontains=search_form.cleaned_data['query']
-    #     )
-    #
-    # if search_form.is_valid() and search_form.cleaned_data['category']:
-    #     products = products.filter(
-    #         categories=search_form.cleaned_data['category']
-    #     )
-
     paginator = Paginator(paged_products, 4)
 
     page_number = request.GET.get("page", 1)
     paged_products = paginator.get_page(page_number)
-
-    # if not request.GET._mutable:
-    #     request.GET._mutable = True
-
-    # request.GET['query'] = search_form.cleaned_data['query']
 
     return HttpResponse(render(request, 'products.html', {
         'products_page': paged_products,
