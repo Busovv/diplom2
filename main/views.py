@@ -1,11 +1,12 @@
 from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse, Http404, HttpResponseBadRequest
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.core.paginator import Paginator
 
 from .forms import SearchForm
-from .models import Product, Order, OrderProduct
+from .models import Product, Order, OrderProduct, Category
 
 
 def home(request: HttpRequest):
@@ -27,7 +28,7 @@ def products_view(request: HttpRequest):
             categories=search_form.cleaned_data['category']
         )
 
-    paginator = Paginator(products, 1)
+    paginator = Paginator(products, 4)
 
     page_number = request.GET.get("page", 1)
     paged_products = paginator.get_page(page_number)
@@ -40,6 +41,35 @@ def products_view(request: HttpRequest):
     return HttpResponse(render(request, 'products.html', {
         'products_page': paged_products,
         'search_form': search_form
+    }))
+
+
+def products_by_category(request: HttpRequest, category_id: int):
+    paged_products = Product.objects.filter(is_active=True, categories=category_id).order_by('-title')
+
+    # search_form = SearchForm(request.GET)
+    # if search_form.is_valid():
+    #     products = products.filter(
+    #         title__icontains=search_form.cleaned_data['query']
+    #     )
+    #
+    # if search_form.is_valid() and search_form.cleaned_data['category']:
+    #     products = products.filter(
+    #         categories=search_form.cleaned_data['category']
+    #     )
+
+    paginator = Paginator(paged_products, 4)
+
+    page_number = request.GET.get("page", 1)
+    paged_products = paginator.get_page(page_number)
+
+    # if not request.GET._mutable:
+    #     request.GET._mutable = True
+
+    # request.GET['query'] = search_form.cleaned_data['query']
+
+    return HttpResponse(render(request, 'products.html', {
+        'products_page': paged_products,
     }))
 
 
@@ -232,3 +262,6 @@ def cancel_order_view(request: HttpRequest, id: int):
     order.save()
 
     return redirect('profile')
+
+
+

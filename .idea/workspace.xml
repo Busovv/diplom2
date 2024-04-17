@@ -6,11 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4cc0e5-e50b-45ad-a796-99526f794521" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0002_alter_product_options_remove_product_discount_price_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0003_alter_product_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0004_product_is_active_alter_product_original_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0005_product_created_at_product_updated_at.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0006_order_orderproduct_order_products.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0007_alter_order_options_alter_order_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0008_product_genre.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0009_rename_genre_product_genre_product_developer_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0010_category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0011_product_categories_alter_category_parent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0012_remove_product_genre.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/product/img/1678418622_papik-pro-p-milii-krot-risunok-48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/base/styles/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/styles/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
