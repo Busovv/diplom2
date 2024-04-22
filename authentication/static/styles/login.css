@@ -28,3 +28,8 @@
 .forgot-password-link-container {
     text-align: center;
 }
+
+main {
+    height: 85%;
+    padding: 10px;
+}

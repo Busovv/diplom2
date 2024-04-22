@@ -27,11 +27,13 @@
         <a href="{% url 'get_order' order.id %}" class="button order-card__link"
           >Посмотреть</a
         >
+        {% if order.status != 'CANCELED' %}
         <a
           href="{% url 'cancel_order' order.id %}"
           class="button button_error order-card__link"
           >Отменить</a
         >
+        {% endif %}
       </div>
     </li>
     {% endfor %}

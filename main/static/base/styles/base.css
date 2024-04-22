@@ -7,6 +7,7 @@
     text-decoration: none;
 }
 
+
 a {
     text-decoration: none;
 }
@@ -15,7 +16,7 @@ body {
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-color: #e1ccb1; /* Цвет кофе с молоком */
+    background-color: #d9f9f3; 
     color: black;
 }
 
@@ -62,7 +63,7 @@ header nav ul li a:hover {
 
 nav ul li ul {
     position: absolute;
-    left: 0;
+    left: 0px;
     width: 180px;
     background: #3d6270;
     display: none;
@@ -77,3 +78,13 @@ nav ul li:hover > ul {
     display: initial;
 }
 
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    padding: 10px;
+}
