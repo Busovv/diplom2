@@ -1,7 +1,5 @@
 # diplom2
 
-Это моя дипломная работа.
-
 python manage.py runserver - запустить сервер
 
 python manage.py startapp name - создать подприложение name
