@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4cc0e5-e50b-45ad-a796-99526f794521" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/static/styles/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/static/styles/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/managers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/base/styles/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/base/styles/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/home/styles/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
