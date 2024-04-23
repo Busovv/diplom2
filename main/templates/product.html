@@ -14,10 +14,10 @@
     <img src="{% if product.image.url is not None %}{{ product.image.url }}{% endif %}" alt="">
     <div class="product__info">
         <h1 class="product__title">{{ product.title }}</h1>
-        <h1> Дата выхода: {{ product.release }} </h1>
-        <h1> Издатель: {{ product.publisher }}</h1>
-        <h1> Разработчик: {{ product.developer }}</h1>
-        <h1> Жанр: {{ product.get_categories_names_string }}</h1>
+        <p class="product__fields"> Дата выхода: {{ product.release }}</p>
+        <p class="product__fields"> Издатель: {{ product.publisher }}</p>
+        <p class="product__fields"> Разработчик: {{ product.developer }}</p>
+        <p class="product__fields"> Жанр: {{ product.get_categories_names_string }}</p>
         <div class="product__price-container">
             {% if product.original_price is not None %}
             <h2 class="product__field product__prices-heading">Цена:</h2>
@@ -34,7 +34,7 @@
                 В корзину
             </button>
         </form>
-        <p class="product__field"><span class="product__description">{{ product.description }}</span></p>
+        <p class="product__field"><span class="product__description">Описание: {{ product.description }}</span></p>
     </div>
 </div>
 
